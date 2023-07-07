@@ -699,7 +699,7 @@
     }
 
     .badge-success {
-        background-color: #1a810c;
+        background-color: #170c81;
     }
 
     .badge-info {
@@ -852,15 +852,14 @@
     </style>
 </head>
 
-<body class="vertical-layout" data-color="bg-gradient-x-purple-blue" style="background-color:black" onload="ccgen();">
-    <div
-        style='width:100%; background-color:black; text-align:center; font-size: 15px; padding: 20px; color:white; border-bottom: 2px solid red;'>
-        TRY OUR SK BASED CC CHECKER<a href="https://ghostchecker.site"><span style='color:#ff0000;'> CLICK
-                HERE</span></a></div>
+<body class="vertical-layout" data-color="bg-gradient-x-purple-blue" style="background-color:black"> <div style='width:100%; background-color:black; text-align:center; font-size: 15px; padding: 20px; color:white; border-bottom: 2px solid red;'>TRY OUR SK BASED CC CHECKER<a href="http://ghostchecker.site" ><span style='color:#ff0000;'> CLICK HERE</span></a></div>
     <div class="app-content content">
+   
         <div class="content-wrapper">
+            
             <div class="content-wrapper-before mb-3">
             </div>
+
             <div class="content-body">
                 <div class="mt-2"></div>
                 <div class="row">
@@ -871,40 +870,15 @@
                                 <span> </span>
                                 <span> </span>
                                 <span> </span>
-                                <h4 class="mb-2"><strong>MASS SK KEY Checker</strong></h4>
+                                <h4 class="mb-2"><strong>MASS SK KEY CHECKER</strong></h4>
 
                                 <textarea rows="16" id="lista" class="form-control text-center form-checker mb-2"
                                     placeholder=""></textarea>
-                                <textarea rows="1" class="form-control text-center"
-                                    style="width: 70%; float: left; resize:none; overflow:hidden; display:none;"
-                                    id="sec" placeholder="SK KEY HERE"></textarea>
-                                <textarea rows="1" class="form-control text-center"
-                                    style="width: 30%;display: none;float: right;margin-bottom: 5px;resize:none display:none;overflow:hidden;"
-                                    id="cst" placeholder="CUSTOM"></textarea>
-                                <select name="gate" id="gate" class="form-control"
-                                    style="display:none; margin-bottom: 5px; text-align:center;" <option </option>
-
-                                    <option
-                                        style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white"
-                                        value="gate/usd1CCN.php">SK CCN Charged : $1</option>
-
-                                    <option
-                                        style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white"
-                                        value="gate/usd1CVV.php">SK CVV Charged : $1</option>
-
-                                    <!-- <option
-                                        style="background:rgba(16, 15, 154, 0.281);color:rgb(25, 208, 1);color:white"
-                                        value="gate/api1.php">API 1 : Non SK (Membership Site)</option>
-
-                                    <option
-                                        style="background:rgba(16, 15, 154, 0.281);color:rgb(25, 208, 1);color:white"
-                                        value="gate/api2.php">API 2 : Non SK (Membership Site)</option> -->
-
-
-                                </select>
                                 <br>
+
                                 <button class="btn btn-play btn-glow btn-bg-gradient-x-blue-cyan text-white"
-                                    style="width: 49%; float: left;"><i class="fa fa-play"></i> START</button>
+                                    style="width: 49%; float: left;" onclick="enviar()"><i class="fa fa-play"></i>
+                                    START</button>
                                 <button class="btn btn-stop btn-glow btn-bg-gradient-x-red-pink text-white"
                                     style="width: 49%; float: right;" disabled><i class="fa fa-stop"></i> STOP</button>
 
@@ -915,30 +889,24 @@
                     </div>
 
                     <div class="col-md-4">
-
                         <div class="card mb-2">
                             <div class="card-body">
 
                                 <h5 style="margin-bottom:-0.2rem"> TOTAL :<span
-                                        class="badge badge-dark float-right carregadas">0</span></h5>
+                                        class="badge badge-dark float-right " id="total">0</span></h5>
                                 <hr>
 
                                 <h5 style="margin-bottom:-0.2rem"> LIVE :<span
-                                        class="badge badge-success float-right charge">0</span></h5>
+                                        class="badge badge-success float-right charge" id="cLive">0</span></h5>
                                 <hr>
 
                                 <h5 style="margin-bottom:-0.2rem"> RATE LIMITED :<span
-                                        class="badge badge-info float-right cvvs">0</span></h5>
+                                        class="badge badge-info float-right cvvs" id="cLimit">0</span></h5>
                                 <hr>
-                                <!-- 
-                                <h5 style="margin-bottom:-0.2rem"> CCN :<span
-                                        class="badge badge-primary float-right aprovadas">0</span></h5>
-                                <hr> -->
 
                                 <h5 style="margin-bottom:-0.2rem"> DEAD :<span
-                                        class="badge badge-danger float-right reprovadas">0</span></h5>
+                                        class="badge badge-danger float-right " id="cDie">0</span></h5>
 
-                                <center>
                             </div>
                         </div>
 
@@ -958,7 +926,10 @@
                                     <h4 class="card-title mb-1" style='text-align:left;'><i
                                             class="fa fa-check-circle text-success"></i> LIVE
                                     </h4>
-                                    <div id='lista_charge' style='text-align:left;'></div>
+
+                                    <div id="bode2" style='text-align:left;'>
+                                        <span id=".aprovadas" class="aprovadas"></span>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -975,26 +946,13 @@
 
                                     <h4 class="card-title mb-1" style='text-align:left;'><i
                                             class="fa fa-check text-success"></i> RATE LIMITED</h4>
-                                    <div id='lista_cvvs' style='text-align:left;'></div>
+                                    <div id='bode2' style='text-align:left;'>
+                                        <span id=".ratelimited" class="ratelimited"></span>
+                                    </div>
+
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="float-right">
-                                    <button type="show" class="btn btn-primary btn-sm show-lives"><i
-                                            class="fa fa-eye-slash"></i></button>
-                                    <button class="btn btn-success btn-sm btn-copy"><i class="fa fa-copy"></i></button>
-                                </div>
-
-                                <center>
-
-                                    <h4 class="card-title mb-1" style='text-align:left;'><i class="fa fa-times text-success"></i> CCN</h4>
-                                    <div id='lista_aprovadas'  style='text-align:left;'></div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
@@ -1007,8 +965,12 @@
                                 <center>
 
                                     <h4 class="card-title mb-1" style='text-align:left;'><i
-                                            class="fa fa-times text-danger"></i> DECLINED</h4>
-                                    <div style='text-align:left;' id='lista_reprovadas'></div>
+                                            class="fa fa-times text-danger"></i> DEAD</h4>
+                                    <div style='text-align:left;' id="bode2">
+                                        <span id=".reprovadas" class="reprovadas"></span>
+                                    </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -1025,286 +987,96 @@
             </style>
             <footer>
                 <p> <b>
-                        <div class=text-danger>EDITED BY GHOST X @otaku_codes
+                        <div class=text-danger>EDITED BY GHOST
                     </b></a>
         </div>
         </p>
         </footer>
 
-        <script>
-        $(document).ready(function() {
+       
 
-
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-
-
-
-            $('.show-charge').click(function() {
-                var type = $('.show-charge').attr('type');
-                $('#lista_charge').slideToggle();
-                if (type == 'show') {
-                    $('.show-charge').html('<i class="fa fa-eye"></i>');
-                    $('.show-charge').attr('type', 'hidden');
-                } else {
-                    $('.show-charge').html('<i class="fa fa-eye-slash"></i>');
-                    $('.show-charge').attr('type', 'show');
-                }
-            });
-
-            $('.show-live').click(function() {
-                var type = $('.show-live').attr('type');
-                $('#lista_cvvs').slideToggle();
-                if (type == 'show') {
-                    $('.show-live').html('<i class="fa fa-eye"></i>');
-                    $('.show-live').attr('type', 'hidden');
-                } else {
-                    $('.show-live').html('<i class="fa fa-eye-slash"></i>');
-                    $('.show-live').attr('type', 'show');
-                }
-            });
-
-            $('.show-lives').click(function() {
-                var type = $('.show-lives').attr('type');
-                $('#lista_aprovadas').slideToggle();
-                if (type == 'show') {
-                    $('.show-lives').html('<i class="fa fa-eye"></i>');
-                    $('.show-lives').attr('type', 'hidden');
-                } else {
-                    $('.show-lives').html('<i class="fa fa-eye-slash"></i>');
-                    $('.show-lives').attr('type', 'show');
-                }
-            });
-
-            $('.show-dies').click(function() {
-                var type = $('.show-dies').attr('type');
-                $('#lista_reprovadas').slideToggle();
-                if (type == 'show') {
-                    $('.show-dies').html('<i class="fa fa-eye"></i>');
-                    $('.show-dies').attr('type', 'hidden');
-                } else {
-                    $('.show-dies').html('<i class="fa fa-eye-slash"></i>');
-                    $('.show-dies').attr('type', 'show');
-                }
-            });
-
-            $('.btn-trash').click(function() {
-                Swal.fire({
-                    title: 'REMOVED DEAD',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    toast: true,
-                    position: 'top-end',
-                    timer: 3000
-                });
-                $('#lista_reprovadas').text('');
-            });
-
-            $('.btn-copy1').click(function() {
-                Swal.fire({
-                    title: 'COPIED CHARGED',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    toast: true,
-                    position: 'top-end',
-                    timer: 3000
-                });
-                var lista_charge = document.getElementById('lista_charge').innerText;
-                var textarea = document.createElement("textarea");
-                textarea.value = lista_charge;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            });
-
-            $('.btn-copy2').click(function() {
-                Swal.fire({
-                    title: 'COPIED CVV',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    toast: true,
-                    position: 'top-end',
-                    timer: 3000
-                });
-                var lista_live = document.getElementById('lista_cvvs').innerText;
-                var textarea = document.createElement("textarea");
-                textarea.value = lista_live;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            });
-
-            $('.btn-copy').click(function() {
-                Swal.fire({
-                    title: 'COPIED CCN',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    toast: true,
-                    position: 'top-end',
-                    timer: 3000
-                });
-                var lista_lives = document.getElementById('lista_aprovadas').innerText;
-                var textarea = document.createElement("textarea");
-                textarea.value = lista_lives;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            });
-
-
-            $('.btn-play').click(function() {
-                var sec = $("#sec").val();
-                var cst = $("#cst").val();
-                var e = document.getElementById("gate");
-                var gate = e.options[e.selectedIndex].value;
-                var lista = $('.form-checker').val().trim();
-                var array = lista.split('\n');
-                var charge = 0,
-                    live = 0,
-                    lives = 0,
-                    dies = 0,
-                    testadas = 0,
-                    txt = '';
-
-                if (!lista) {
-                    Swal.fire({
-                        title: 'You did not provide a SK :(',
-                        icon: 'error',
-                        showConfirmButton: false,
-                        toast: true,
-                        position: 'top-end',
-                        timer: 3000
-                    });
-                    return false;
-                }
-
-                Swal.fire({
-                    title: 'Your SK are being checked...',
-                    icon: 'success',
-                    showConfirmButton: false,
-                    toast: true,
-                    position: 'top-end',
-                    timer: 3000
-                });
-
-                var line = array.filter(function(value) {
-                    if (value.trim() !== "") {
-                        txt += value.trim() + '\n';
-                        return value.trim();
-                    }
-                });
-
-                /*
-                var line = array.filter(function(value){
-                return(value.trim() !== "");
-                });
-                */
-
-                var total = line.length;
-
-
-                /*
-                line.forEach(function(value){
-                txt += value + '\n';
-                });
-                */
-
-                $('.form-checker').val(txt.trim());
-                // ảo ma hả, đừng lấy code chứ !!
-                if (total > 10000) {
-                    Swal.fire({
-                        title: 'Do You Want Checker to Die? Reduce SK To < 10000',
-                        icon: 'warning',
-                        showConfirmButton: false,
-                        toast: true,
-                        position: 'top-end',
-                        timer: 3000
-                    });
-                    return false;
-                }
-
-                $('.carregadas').text(total);
-                $('.btn-play').attr('disabled', true);
-                $('.btn-stop').attr('disabled', false);
-
-                line.forEach(function(data) {
-                    var callBack = $.ajax({
-                        url: 'api.php?sk=' + data,
-                        success: function(retorno) {
-                            if (retorno.indexOf("CHARGED") >= 0) {
-                                $('#lista_charge').append(retorno);
-                                removelinha();
-                                charge = charge + 1;
-                            } else if (retorno.indexOf("CVV") >= 0) {
-                                $('#lista_cvvs').append(retorno);
-                                removelinha();
-                                live = live + 1;
-                            } else if (retorno.indexOf("CCN") >= 0) {
-                                $('#lista_aprovadas').append(retorno);
-                                removelinha();
-                                lives = lives + 1;
-                            } else {
-                                $('#lista_reprovadas').append(retorno);
-                                removelinha();
-                                dies = dies + 1;
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script title="ajax do checker">
+        function enviar() {
+            var linha = $("#lista").val();
+            var linhaenviar = linha.split("\n");
+            var total = linhaenviar.length;
+            var ap = 0;
+            var ed = 0;
+            var rp = 0;
+            var rl = 0;
+            linhaenviar.forEach(function(value, index) {
+                setTimeout(
+                    function() {
+                        $.ajax({
+                            url: 'api.php?sk=' + value,
+                            type: 'GET',
+                            async: true,
+                            success: function(resultado) {
+                                if (resultado.match("LIVE")) {
+                                    removelinha();
+                                    ap++;
+                                    aprovadas(resultado + "");
+                                } else if (resultado.match("DEAD")) {
+                                    removelinha();
+                                    rp++;
+                                    reprovadas(resultado + "");
+                                } else if (resultado.match("RATE LIMITED")) {
+                                    removelinha();
+                                    rl++;
+                                    ratelimited(resultado + "");
+                                }
+                                $('#carregadas').html(total);
+                                var fila = parseInt(ap) + parseInt(rp) + parseInt(rl);
+                                $('#cLive').html(ap);
+                                $('#cWarn').html(ed);
+                                $('#cDie').html(rp);
+                                $('#total').html(fila);
+                                $('#cLive2').html(ap);
+                                $('#cWarn2').html(ed);
+                                $('#cDie2').html(rp);
+                                $('#cLimit').html(rl);
                             }
-                            testadas = charge + live + lives + dies;
-                            $('.charge').text(charge);
-                            $('.cvvs').text(live);
-                            $('.aprovadas').text(lives);
-                            $('.reprovadas').text(dies);
-                            $('.testadas').text(testadas);
-
-                            if (testadas == total) {
-                                Swal.fire({
-                                    title: 'ALL SK HAS BEEN CHECKED',
-                                    icon: 'success',
-                                    showConfirmButton: false,
-                                    toast: true,
-                                    position: 'top-end',
-                                    timer: 3000
-                                });
-                                $('.btn-play').attr('disabled', false);
-                                $('.btn-stop').attr('disabled', true);
-                            }
-                        }
-                    });
-                    $('.btn-stop').click(function() {
-                        Swal.fire({
-                            title: 'PAUSED',
-                            icon: 'warning',
-                            showConfirmButton: false,
-                            toast: true,
-                            position: 'top-end',
-                            timer: 3000
                         });
-                        $('.btn-play').attr('disabled', false);
-                        $('.btn-stop').attr('disabled', true);
-                        callBack.abort();
-                        return false;
-                    });
-                });
+                    }, 2500 * index);
             });
-        });
+        }
+
+        function aprovadas(str) {
+            $(".aprovadas").append(str + "<br>");
+        }
+
+        function reprovadas(str) {
+            $(".reprovadas").append(str + "<br>");
+        }
+
+        function ratelimited(str) {
+            $(".ratelimited").append(str + "<br>");
+        }
 
         function removelinha() {
-            var lines = $('.form-checker').val().split('\n');
+            var lines = $("#lista").val().split('\n');
             lines.splice(0, 1);
-            $('.form-checker').val(lines.join("\n"));
+            $("#lista").val(lines.join("\n"));
         }
         </script>
-
-        <!-- /* autogen needs ghost */ -->
-        <script src="theme-assets/js/core/libraries/jquery.min.js" type="text/javascript"></script>
-        <script src="theme-assets/js/ghost.js"></script>
-</body>
-
-</html>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/js/bootstrap.min.js"
+            integrity="sha512-vyRAVI0IEm6LI/fVSv/Wq/d0KUfrg3hJq2Qz5FlfER69sf3ZHlOrsLriNm49FxnpUGmhx+TaJKwJ+ByTLKT+Yg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+        </script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/js/mdb.min.js">
+        < /body> < /
+        html >

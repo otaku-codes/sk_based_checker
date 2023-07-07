@@ -1,0 +1,174 @@
+🔥 Stripe Sites Req 🔥
+★PAYMENT INTENT $1
+★ᴄᴀʀᴅ -» 4859538700260303|08|2025|603 
+★STATUS-» Approved 🟢
+★RESPONSE -» Insufficient Funds ❎
+★REQ 5 RESP -» Your card has insufficient funds.
+★GATEWAY -» Stripe PAYMENT INTENT $1
+-———-»ɪɴꜰᴏ«-———-
+★ʙɪɴ -» 485953 - visa 
+★ᴅᴀᴛᴀ -» Purchasing credit
+★ʙᴀɴᴋ -» BANCO DAVIVIENDA, S.A.
+★ᴄᴏᴜɴᴛʀʏ -» Colombia 🇨🇴 COP
+
+
+ 4084611217977268|06|2023|398 
+5524903601518211|04|2029|788
+
+
+
+
+➖➖➖➖➖➖➖➖➖
+If:
+Sources = 1req
+If:
+Token = 1req
+If:
+Admin ajax = 1req
+➖➖➖➖➖➖➖➖➖
+If:
+Admin ajax + payment method = 2req
+admin ajax + sources = 2req
+If:
+payment method + token = 2req
+If:
+Sources + token = 2req
+If:
+Sources + admin ajax = 2req
+➖➖➖➖➖➖➖➖➖
+If:
+1. Admin ajax + payment method + token = 3req 
+If:
+Admin ajax + payment method + sources = 3req
+If:
+Sources + token + Payment method = 3req
+➖➖➖➖➖➖➖➖➖
+🔥 Stripe Error Codes 🔥
+➖➖➖➖➖➖➖➖➖
+💳[Good Response Results]💳
+➖➖➖➖➖➖➖➖➖
+📲1. CVC CHECK: NULL 
+(Good for CCN)
+➖➖➖      ➖➖➖
+📲2. CVC CHECK: PASS 
+(Good for CCN/CVV)
+➖➖➖➖➖➖➖➖➖
+➖➖➖➖➖➖➖➖➖
+💳[Declined Code/Reason/Result of Good Response]💳
+➖➖➖➖➖➖➖➖➖
+📱1. Incorrect CVC
+(Good For CCN now Try CVV)
+➖➖➖        ➖➖➖
+📱2. Incorrect Zip
+(Good for CCN/CVV)
+➖➖➖        ➖➖➖
+📱3. Insufficient Fund
+(Good For CCN/CVV)
+➖➖➖        ➖➖➖
+📱4. Your card zip code is incorret
+(Good for CCN/CVV)
+➖➖➖        ➖➖➖
+📱5. Your card security code is incorrect
+(Good for CCN Now Try CVV)
+➖➖➖➖➖➖➖➖➖
+➖➖➖➖➖➖➖➖➖
+💳[Bad Response Result]💳
+➖➖➖➖➖➖➖➖➖
+📲1. CVC CHECK : UNCHECKED (Check Another Request If Any or Same)Leave The Site
+➖➖➖       ➖➖➖
+📲2. CVC CHECK : UNAVAILABLE (Try Different VPN/IP/PROXY Else Leave The Site)
+➖➖➖➖➖➖➖➖➖
+➖➖➖➖➖➖➖➖➖
+💳[Declined Reason of Bad]💳
+➖➖➖➖➖➖➖➖➖
+📱1. GENERIC DECLINE 
+(Change CC and If Again Same Response Then Site is Bad)
+📱2. INVALID CARD ERROR
+(Here, You Must Have To Change Your CC and Try Again)
+
+
+"Pay with card" + "pricing"
+
+"Pay with card" + "Purchase Now"
+
+"Pay with card" + "Get offer"
+
+"membership" + "pay with card"
+
+inurl:/donate intext:"Pay with Card
+
+inurl:/donate intext:"One Time Donation"
+
+"Pay with card" + "Card Details" + "Confirm Donation"
+
+"Pay with card" + "Buy Now"
+
+inurl:/checkout intext:"Pay with your credit card via Stripe"
+
+inurl:donate + intext:"Pay with your credit card via Stripe"
+
+inurl:donate + intext:stripe
+
+intext:"stripe"  intitle:"paid plan"
+
+intext:"stripe"  intitle:"buy membership"
+
+inurl:.com/donate + intext:stripe
+
+intext:Checkout inurl:privacy stripe
+
+intext:Shop inurl:Privacy stripe
+
+Intext:Donate inurl:privacy stripe
+
+Braintree 
+
+intext:"braintree"  intitle:"membership"
+
+intext:"braintree"  intitle:"add cart"
+
+inurl:.com/donate + intext:braintree
+
+inurl:.org/donate + intext:braintree
+
+Woocommerce
+
+intext:"woocommerce"  intitle:"buy now"
+
+intext:"woocommerce"  intitle:"add cart"
+
+intext:"woocommerce"  intitle:"paid plan"
+
+Bigcommerce
+
+inurl:donate + intext:bigcommerce
+
+intext:"Powered by BigCommerce" intext:"SHOP BY PRICE" 
+
+intext:"bigcommerce"  intitle:"buy now"
+
+STRIPE REQ DORK
+➖➖➖➖➖➖➖➖➖
+If:
+Sources = 1req
+If:
+Token = 1req
+If:
+Admin ajax = 1req
+➖➖➖➖➖➖➖➖➖
+If:
+Admin ajax + payment method = 2req
+admin ajax + sources = 2req
+If:
+payment method + token = 2req
+If:
+Sources + token = 2req
+If:
+Sources + admin ajax = 2req
+➖➖➖➖➖➖➖➖➖
+If:
+1. Admin ajax + payment method + token = 3req 
+If:
+Admin ajax + payment method + sources = 3req
+If:
+Sources + token + Payment method = 3re

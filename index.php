@@ -886,7 +886,7 @@
 
                                     <option
                                         style="background:rgba(16, 15, 154, 0.281);color:rgb(255, 208, 0);color:white"
-                                        value="gate/usd5CCN.php">SK CCN Charged : $5</option>
+                                        value="gate/usd1CVV.php">SK CVV Charged : $1</option>
 
                                     <!-- <option
                                         style="background:rgba(16, 15, 154, 0.281);color:rgb(25, 208, 1);color:white"
@@ -1279,7 +1279,7 @@
             </style>
             <footer>
                 <p> <b>
-                        <div class=text-danger>EDITED BY GHOST
+                        <div class=text-danger>EDITED BY GHOST X @otaku_codes
                     </b></a>
         </div>
         </p>

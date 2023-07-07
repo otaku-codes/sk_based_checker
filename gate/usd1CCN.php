@@ -153,7 +153,7 @@ if(strpos($result2, '"seller_message": "Payment complete."' )) {
     <br>
     ➤ Response: $'.$amt.' CCN Charged ✅
     <br>
-    ➤ Receipt: <span style="color: green;" class="badge"><a href="' . $receipturl . '"  target="_blank"><b>Here</b></a></span>
+    ➤ Receipt: <span style="color: green;" class="badge"><a href="' . $receipturl . '"target="_blank"><b>Here</b></a></span>
     <br>
     ➤ Checked from: <b>' . $domain . '</b></font><br>';
     while (!$sendchargedtotg && $num_retries < $max_retries) {

@@ -62,7 +62,7 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_USERPWD, $sk. ':' . '');  
 
 curl_setopt($ch, CURLOPT_POSTFIELDS, 'type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'');  
-
+// type=card&card[number]='.$cc.'&card[exp_month]='.$mes.'&card[exp_year]='.$ano.'
 $result1 = curl_exec($ch);  
 
 $tok1 = Getstr($result1,'"id": "','"');  

@@ -546,6 +546,7 @@ function darkside(p1, tr) {
         if (jou == 2) var out = out + "</xml>";
         else if (jou == 3) var out = out + "}";
         document.getElementById('lista').value = out;
+    
         
     }
 }

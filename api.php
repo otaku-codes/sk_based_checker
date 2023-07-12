@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html class="loading">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -851,7 +850,6 @@
     }
     </style>
 </head>
-
 <body class="vertical-layout" data-color="bg-gradient-x-purple-blue" style="background-color:black" onload="ccgen();">
     <div class="app-content content">
         <div class="content-wrapper">

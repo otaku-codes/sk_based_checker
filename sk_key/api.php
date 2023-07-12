@@ -335,6 +335,7 @@ if(isset($res1['error'])){
     }
 }
 
+
 /*===[PHP Functions]==========================================*/
 function emailGenerate($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

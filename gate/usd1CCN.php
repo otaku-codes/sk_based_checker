@@ -275,8 +275,7 @@ elseif(strpos($result2, ' "message": "Your card number is incorrect."')) {
     }
 elseif(strpos($result2, '"decline_code": "service_not_allowed"')) {
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: SERVICE NOT ALLOWED</span><br>';
-
-}
+} 
 elseif(strpos($result, "incorrect_number")) {
     echo 'DEAD</span>  </span>CC:  '.$lista.'</span>  <br>Result: INCORRECT CARD NUMBER</span><br>';
 }

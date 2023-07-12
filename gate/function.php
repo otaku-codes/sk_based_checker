@@ -56,5 +56,5 @@ function random_ua() {
             return $navegadoresOpera[array_rand($navegadoresOpera)];
             break;
     }
-}
+} 
 ?>

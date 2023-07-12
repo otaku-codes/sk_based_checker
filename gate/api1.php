@@ -139,7 +139,7 @@ if($state=="Alabama"){ $state="AL";
 //////////======= Webshare
 // $Webshare = rand(0,250);
 // $rp1 = array(
-//   1 => 'nxt_z4jwhgqtz2:v0WyNiXEK0g9PRNj_session-6TvgpHvB',
+//   1 => '8e4a7166-1253886:fpkpypkoz9q',
 //   // 2 => '8e4a7166-1253886:fpkpypkoz9q',
 //   // 3 => '8e4a7166-1253886:fpkpypkoz9q',
 //   // 4 => '8e4a7166-1253886:fpkpypkoz9q',
@@ -150,7 +150,7 @@ if($state=="Alabama"){ $state="AL";
 // $ch = curl_init('https://api.ipify.org/');
 // curl_setopt_array($ch, [
 // CURLOPT_RETURNTRANSFER => true,
-// CURLOPT_PROXY => 'http://basic.nextproxies.io:31112',
+// CURLOPT_PROXY => 'http://webshare url here :31112',
 // CURLOPT_PROXYUSERPWD => $rotate,
 // CURLOPT_HTTPGET => true,
 // ]);
@@ -169,7 +169,7 @@ if($state=="Alabama"){ $state="AL";
 ////////////////////////////===[1 Req]
 
 $ch = curl_init();
-// curl_setopt($ch, CURLOPT_PROXY, "http://basic.nextproxies.io:31112");
+// curl_setopt($ch, CURLOPT_PROXY, "web share url of proxy ");
 // curl_setopt($ch, CURLOPT_PROXYUSERPWD, $rotate);
 curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/payment_methods');
 curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
